@@ -9,6 +9,8 @@
     --yellow-color:  #ff9e14;
     --grey-color:  #454545;
     --font-color:  #282c34;
+    --dark-bg: #282c34;
+    --background: var(--light-color);
 }
 
 /* General styles */
@@ -37,7 +39,8 @@ p{
     width: 80%;
     display: grid;
     grid-template-rows: 70px minmax(0, 1fr) 50px;
-    background: var(--light-color);
+    background: var(--background);
+    color: var(--font-color);
 }
 
 header{
@@ -137,6 +140,36 @@ header{
 
 #menu-contact::after{
     content: "Let´s talk";
+}
+
+/* Dark mode */
+.mode__label::after{
+    content: "🌚";
+}
+
+#menu-mode{
+    display:none;
+}
+
+#menu-mode:checked  + .wrapper .mode__label::after{
+    content: "🌝";
+}
+
+#menu-mode:checked + .wrapper{
+    --background : var(--dark-bg);
+    color: var(--light-color);
+}
+
+#menu-mode:checked  + .wrapper .resource__item a{
+    color: var(--light-color);
+}
+
+#menu-mode:checked  + .wrapper nav a{
+    color: var(--light-color);
+}
+
+#menu-mode:checked  + .wrapper main::-webkit-scrollbar-track {
+    background-color: var(--dark-bg);
 }
 
 
@@ -351,7 +384,6 @@ footer{
         width: 90%;
         display: grid;
         grid-template-rows: 70px minmax(0, 1fr) 40px;
-        background: var(--light-color);
     }
 
     header{
